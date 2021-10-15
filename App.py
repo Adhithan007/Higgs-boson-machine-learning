@@ -36,7 +36,7 @@ def main():
     v14=st.number_input(colnames[13],)
     
     
-    vals=[v1,v2,v3,v4,v5,v6,v7,v8,v9,v9,v10,v11,v12,v13,v14]
+    vals=[v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14]
     
     
     if st.button('Detect Event'): 
