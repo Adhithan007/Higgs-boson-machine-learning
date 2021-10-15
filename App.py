@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
 
-model = load_model('HiggsBosan.h5')
+model = load_model('HiggsBosan.hdf5')
 
 def preprocess_test(arr):
     arr=np.array(arr)
