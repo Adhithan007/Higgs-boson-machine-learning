@@ -49,8 +49,7 @@ def main():
         st.success("Predicted val"+" s")
       
     
-  if __name__ == '__main__':
-
+if __name__ == '__main__':
     main()  
     
     
