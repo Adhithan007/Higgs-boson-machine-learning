@@ -1,9 +1,9 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import tensorflow as tf 
+from tensorflow.keras.models import load_model
 
-model = tf.keras.models.load_model('HiggsBosan.h5')
+model = load_model('HiggsBosan.h5')
 
 def preprocess_test(arr):
     arr=np.array(arr)
