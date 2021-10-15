@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
 
-model = load_model('HiggsBoson.hdf5')
+model = load_model('StreamLit/HiggsBoson.hdf5')
 
 def preprocess_test(arr):
     arr=np.array(arr)
