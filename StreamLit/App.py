@@ -18,7 +18,9 @@ def main():
     st.write('This is a simple demo of the Streamlit framework')
     st.write('It demonstrates how to load a model, make predictions, and display the results')
     
-    file = st.file_uploader('Dataset')
+    
+    if (st.button("Upload dataset")):
+        file = st.file_uploader('Dataset')
     
     if(file):
         df = pd.read_csv(file)
@@ -91,22 +93,22 @@ def main():
         st.pyplot(f)
         
         
-        st.subheader("The basic DL model for the data")
-        with st.echo():
-            # baseline model
-            def create_baseline():
-                # create model
-                model = Sequential()
-                model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
-                model.add(Dense(30, activation='relu'))
-                model.add(Dense(2, activation='sigmoid'))
-                # Compile model
-                opt = tf.keras.optimizers.Adam(learning_rate=0.01)
-                model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
-                return model
+st.subheader("The basic DL model for the data")
+with st.echo():
+    # baseline model
+    def create_baseline():
+        # create model
+        model = Sequential()
+        model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
+        model.add(Dense(30, activation='relu'))
+        model.add(Dense(2, activation='sigmoid'))
+        # Compile model
+        opt = tf.keras.optimizers.Adam(learning_rate=0.01)
+        model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+        return model
         
         
-    if st.button('Wannna test the data'):    
+    if st.button('Wannna test Model with Your DATA'):    
         st.write('Model used is trained using the above model')
         st.write('The model was trained on the Higgs Boson dataset')
         st.subheader('Input the Data')
