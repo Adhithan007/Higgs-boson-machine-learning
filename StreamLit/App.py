@@ -98,7 +98,7 @@ def main():
     # baseline model
         def create_baseline():
         # create model
-        model = Sequential()
+        model=Sequential()
         model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
         model.add(Dense(30, activation='relu'))
         model.add(Dense(2, activation='sigmoid'))
