@@ -35,9 +35,21 @@ def main():
         fig = plt.figure(figsize=(7, 4))
         ax = sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
         st.pyplot(fig)
-
         
+        st.subheader("Columns Dropped for the value of -999 count > 100000")
         
+        for col in (df.columns):
+            if -999 in df[col].value_counts().index:
+                if(int(df[col].value_counts()[-999])>=90000):
+                    df=df.drop(columns=[col])
+                    st.write("   ",col)
+        
+        with st.echo():
+            for col in (df.columns):
+                if -999 in df[col].value_counts().index:
+                    if(int(df[col].value_counts()[-999])>=90000):
+                        df=df.drop(columns=[col])
+                        st.write("   ",col)
     
         
         
