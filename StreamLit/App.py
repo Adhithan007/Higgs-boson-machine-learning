@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 model = load_model('StreamLit/HiggsBoson.hdf5')
 
@@ -22,8 +24,18 @@ def main():
         df = pd.read_csv(file)
         st.write(df.head())
         df=df.drop(columns=['EventId','Weight'])
-        st.write('About Data:')
+        st.subheader('About Data:')
         st.write(df.describe().T)
+        df['Label'].value_counts()
+        fig,axes=plt.subplots(figsize=(10,8))
+        sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
+        plt.title('Label counts')
+        
+        
+        
+    
+        
+        
     
     
     st.write('The model was trained on the Higgs Boson dataset')
