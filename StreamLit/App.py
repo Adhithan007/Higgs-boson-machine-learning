@@ -74,6 +74,8 @@ def main():
         X_train = df.drop(columns=['Label'])
         
         
+        
+        st.subheader("Finally preprocessed X_train data")
         f, ax = plt.subplots(figsize=(14, 14))
         corr = df.corr()
         hm = sns.heatmap(round(corr,2), annot=True, ax=ax, cmap="coolwarm",fmt='.2f',
