@@ -69,7 +69,27 @@ def main():
                     df=df.drop(columns=[col])
                     print("   ",col)
         
-    
+        df[df==-999.000] = np.NaN
+        df.fillna(df.mean(), inplace = True)
+        X_train = df.drop(columns=['Label'])
+        
+        
+        f, ax = plt.subplots(figsize=(14, 14))
+        corr = df.corr()
+        hm = sns.heatmap(round(corr,2), annot=True, ax=ax, cmap="coolwarm",fmt='.2f',
+                         linewidths=.05)
+        ax.set_xticklabels(
+            ax.get_xticklabels(),
+            rotation=45,
+            horizontalalignment='right'
+        );
+
+        f.subplots_adjust(top=0.93)
+        t= f.suptitle(' Correlation Heatmap', fontsize=14)
+        st.pyplot(f)
+        
+        
+        
     
     st.write('The model was trained on the Higgs Boson dataset')
     st.subheader('Input the Data')
