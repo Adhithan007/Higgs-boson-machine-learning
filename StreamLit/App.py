@@ -17,8 +17,10 @@ def main():
     st.write('It demonstrates how to load a model, make predictions, and display the results')
     
     file = st.file_uploader('Dataset')
-    dataset = pd.read_csv(file)
-    st.write(dataset.head())
+    
+    if(file):
+        df = pd.read_csv(file)
+        st.write(df.head())
     
     
     
