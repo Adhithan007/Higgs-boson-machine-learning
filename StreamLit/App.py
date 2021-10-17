@@ -93,7 +93,7 @@ def main():
         st.pyplot(f)
         
         
-st.subheader("The basic DL model for the data")
+    st.subheader("The basic DL model for the data")
     with st.echo():
         # baseline model
         def create_baseline():
