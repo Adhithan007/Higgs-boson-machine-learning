@@ -106,7 +106,7 @@ def main():
                 return model
         
         
-    st.button('Wannna test the data'):    
+    if st.button('Wannna test the data'):    
         st.write('Model used is trained using the above model')
         st.write('The model was trained on the Higgs Boson dataset')
         st.subheader('Input the Data')
