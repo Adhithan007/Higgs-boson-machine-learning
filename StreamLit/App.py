@@ -26,11 +26,11 @@ def main():
         df=df.drop(columns=['EventId','Weight'])
         st.subheader('About Data:')
         st.write(df.describe().T)
-        df['Label'].value_counts()
-        fig,axes=plt.subplots(figsize=(10,8))
-        sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
-        plt.title('Label counts')
-        
+        st.bar_chart(df['Label'].value_counts())
+#         fig,axes=plt.subplots(figsize=(10,8))
+#         sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
+#         plt.title('Label counts')
+         
         
         
     
