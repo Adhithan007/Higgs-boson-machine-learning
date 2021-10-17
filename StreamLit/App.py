@@ -11,7 +11,7 @@ def preprocess_test(arr):
     arr=np.array(arr)
     arr=arr.reshape(-1, 14)
     return arr
-file=False
+# file=False
 def main():
   
 #     st.header('Higgs Boson Event Detection')
@@ -108,7 +108,7 @@ def main():
 #                 return model
 
         
-    if st.button('Wannna test Model with Your DATA'):    
+  
         st.write('Model used is trained using the above model')
         st.write('The model was trained on the Higgs Boson dataset')
         st.subheader('Input the Data')
