@@ -21,7 +21,9 @@ def main():
     if(file):
         df = pd.read_csv(file)
         st.write(df.head())
-    
+        df=df.drop(columns=['EventId','Weight'])
+        st.write('About Data:')
+        st.write(df.describe().T)
     
     
     st.write('The model was trained on the Higgs Boson dataset')
