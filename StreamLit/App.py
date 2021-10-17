@@ -42,16 +42,32 @@ def main():
             if -999 in df[col].value_counts().index:
                 if(int(df[col].value_counts()[-999])>=90000):
                     df=df.drop(columns=[col])
-                    st.write("   ",col)
+                    st.write("         ",col)
         
         with st.echo():
             for col in (df.columns):
                 if -999 in df[col].value_counts().index:
                     if(int(df[col].value_counts()[-999])>=90000):
                         df=df.drop(columns=[col])
-                        st.write("   ",col)
+                        print("   ",col)
+   
+
+        st.subheader("Columns Dropped for the value of Mean < 0")
     
+        ind=(df.mean()).index
+        ke =(df.mean()).values
+        for i,col in enumerate(ind):
+            if(ke[i]<0):
+                df=df.drop(columns=[col])
+                st.write("          ",col)
         
+        with st.echo():
+            ind=(df.mean()).index
+            ke =(df.mean()).values
+            for i,col in enumerate(ind):
+                if(ke[i]<0):
+                    df=df.drop(columns=[col])
+                    print("   ",col)
         
     
     
