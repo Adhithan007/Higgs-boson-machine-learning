@@ -14,98 +14,98 @@ def preprocess_test(arr):
 # file=False
 def main():
   
-#     st.header('Higgs Boson Event Detection')
-#     st.write('This is a simple demo of the Streamlit framework')
-#     st.write('It demonstrates how to load a model, make predictions, and display the results')
+    st.header('Higgs Boson Event Detection')
+    st.write('This is a simple demo of the Streamlit framework')
+    st.write('It demonstrates how to load a model, make predictions, and display the results')
     
     
  
-#     file = st.file_uploader('Dataset')
+    file = st.file_uploader('Dataset')
     
-#     if(file):
-#         df = pd.read_csv(file)
-#         st.write(df.head())
-#         df=df.drop(columns=['EventId','Weight'])
-#         st.subheader('About Data:')
-#         st.write(df.describe().T)
-# #         st.bar_chart(df['Label'].value_counts())
-# #         fig,axes=plt.subplots(figsize=(10,8))
-# #         sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
-# #         plt.title('Label counts')
+    if(file):
+        df = pd.read_csv(file)
+        st.write(df.head())
+        df=df.drop(columns=['EventId','Weight'])
+        st.subheader('About Data:')
+        st.write(df.describe().T)
+#         st.bar_chart(df['Label'].value_counts())
+#         fig,axes=plt.subplots(figsize=(10,8))
+#         sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
+#         plt.title('Label counts')
          
-#         fig, ax = plt.subplots()
-#         fig = plt.figure(figsize=(7, 4))
-#         ax = sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
-#         st.pyplot(fig)
+        fig, ax = plt.subplots()
+        fig = plt.figure(figsize=(7, 4))
+        ax = sns.barplot(x = df['Label'].value_counts().index, y = df['Label'].value_counts().values)
+        st.pyplot(fig)
         
-#         st.subheader("Columns Dropped for the value of -999 count > 100000")
+        st.subheader("Columns Dropped for the value of -999 count > 100000")
         
-#         for col in (df.columns):
-#             if -999 in df[col].value_counts().index:
-#                 if(int(df[col].value_counts()[-999])>=90000):
-#                     df=df.drop(columns=[col])
-#                     st.write("         ",col)
+        for col in (df.columns):
+            if -999 in df[col].value_counts().index:
+                if(int(df[col].value_counts()[-999])>=90000):
+                    df=df.drop(columns=[col])
+                    st.write("         ",col)
         
-#         with st.echo():
-#             for col in (df.columns):
-#                 if -999 in df[col].value_counts().index:
-#                     if(int(df[col].value_counts()[-999])>=90000):
-#                         df=df.drop(columns=[col])
-#                         print("   ",col)
+        with st.echo():
+            for col in (df.columns):
+                if -999 in df[col].value_counts().index:
+                    if(int(df[col].value_counts()[-999])>=90000):
+                        df=df.drop(columns=[col])
+                        print("   ",col)
    
 
-#         st.subheader("Columns Dropped for the value of Mean < 0")
+        st.subheader("Columns Dropped for the value of Mean < 0")
     
-#         ind=(df.mean()).index
-#         ke =(df.mean()).values
-#         for i,col in enumerate(ind):
-#             if(ke[i]<0):
-#                 df=df.drop(columns=[col])
-#                 st.write("          ",col)
+        ind=(df.mean()).index
+        ke =(df.mean()).values
+        for i,col in enumerate(ind):
+            if(ke[i]<0):
+                df=df.drop(columns=[col])
+                st.write("          ",col)
         
-#         with st.echo():
-#             ind=(df.mean()).index
-#             ke =(df.mean()).values
-#             for i,col in enumerate(ind):
-#                 if(ke[i]<0):
-#                     df=df.drop(columns=[col])
-#                     print("   ",col)
+        with st.echo():
+            ind=(df.mean()).index
+            ke =(df.mean()).values
+            for i,col in enumerate(ind):
+                if(ke[i]<0):
+                    df=df.drop(columns=[col])
+                    print("   ",col)
         
-#         df[df==-999.000] = np.NaN
-#         df.fillna(df.mean(), inplace = True)
-#         X_train = df.drop(columns=['Label'])
+        df[df==-999.000] = np.NaN
+        df.fillna(df.mean(), inplace = True)
+        X_train = df.drop(columns=['Label'])
         
         
         
-#         st.subheader("Finally preprocessed X_train data")
-#         f, ax = plt.subplots(figsize=(14, 14))
-#         corr = df.corr()
-#         hm = sns.heatmap(round(corr,2), annot=True, ax=ax, cmap="coolwarm",fmt='.2f',
-#                          linewidths=.05)
-#         ax.set_xticklabels(
-#             ax.get_xticklabels(),
-#             rotation=45,
-#             horizontalalignment='right'
-#         );
+        st.subheader("Finally preprocessed X_train data")
+        f, ax = plt.subplots(figsize=(14, 14))
+        corr = df.corr()
+        hm = sns.heatmap(round(corr,2), annot=True, ax=ax, cmap="coolwarm",fmt='.2f',
+                         linewidths=.05)
+        ax.set_xticklabels(
+            ax.get_xticklabels(),
+            rotation=45,
+            horizontalalignment='right'
+        );
 
-#         f.subplots_adjust(top=0.93)
-#         t= f.suptitle(' Correlation Heatmap', fontsize=14)
-#         st.pyplot(f)
+        f.subplots_adjust(top=0.93)
+        t= f.suptitle(' Correlation Heatmap', fontsize=14)
+        st.pyplot(f)
         
         
-#         st.subheader("The basic DL model for the data")
-#         with st.echo():
-#         # baseline model
-#             def create_baseline():
-#             # create model
-#                 model=Sequential()
-#                 model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
-#                 model.add(Dense(30, activation='relu'))
-#                 model.add(Dense(2, activation='sigmoid'))
-#                 # Compile model
-#                 opt = tf.keras.optimizers.Adam(learning_rate=0.01)
-#                 model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
-#                 return model
+        st.subheader("The basic DL model for the data")
+        with st.echo():
+        # baseline model
+            def create_baseline():
+            # create model
+                model=Sequential()
+                model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
+                model.add(Dense(30, activation='relu'))
+                model.add(Dense(2, activation='sigmoid'))
+                # Compile model
+                opt = tf.keras.optimizers.Adam(learning_rate=0.01)
+                model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+                return model
 
         
   
