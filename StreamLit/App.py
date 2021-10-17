@@ -106,7 +106,8 @@ def main():
                 opt = tf.keras.optimizers.Adam(learning_rate=0.01)
                 model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
                 return model
-        
+    else:
+        st.write("Please upload the file")
         
     if st.button('Wannna test Model with Your DATA'):    
         st.write('Model used is trained using the above model')
