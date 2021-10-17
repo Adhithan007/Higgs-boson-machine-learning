@@ -94,18 +94,18 @@ def main():
         
         
         st.subheader("The basic DL model for the data")
-        with st.echo():
-            # baseline model
-            def create_baseline():
-                # create model
-                model = Sequential()
-                model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
-                model.add(Dense(30, activation='relu'))
-                model.add(Dense(2, activation='sigmoid'))
-                # Compile model
-                opt = tf.keras.optimizers.Adam(learning_rate=0.01)
-                model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
-                return model
+#         with st.echo():
+#             # baseline model
+#             def create_baseline():
+#                 # create model
+#                 model = Sequential()
+#                 model.add(Dense(60, input_dim=X_train.shape[1], activation='relu'))
+#                 model.add(Dense(30, activation='relu'))
+#                 model.add(Dense(2, activation='sigmoid'))
+#                 # Compile model
+#                 opt = tf.keras.optimizers.Adam(learning_rate=0.01)
+#                 model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+#                 return model
         
         
     if st.button('Wannna test Model with Your DATA'):    
