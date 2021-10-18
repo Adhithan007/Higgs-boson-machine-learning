@@ -15,8 +15,7 @@ def preprocess_test(arr):
 def main():
   
     st.header('Higgs Boson Event Detection')
-    st.write('This is a simple demo of the Streamlit framework')
-    st.write('It demonstrates how to load a model, make predictions, and display the results')
+    st.write('Upload the dataset and see the Anaylsis')
     
     
  
